@@ -1,8 +1,8 @@
 # Analisis Kompleksitas Algoritma: FPB Iteratif vs Rekursif
 
-Program ini adalah aplikasi visualisasi berbasis **Python** dan **Streamlit** yang dirancang untuk membandingkan performa (running time) antara algoritma **Euclidean Iteratif** dan **Euclidean Rekursif** dalam mencari Faktor Persekutuan Terbesar (FPB).
+Program ini adalah aplikasi visualisasi interaktif berbasis **Python** dan **Streamlit** untuk membandingkan performa (*running time*) antara algoritma **Euclidean Iteratif** dan **Euclidean Rekursif** dalam mencari Faktor Persekutuan Terbesar (FPB).
 
-Tujuan utama program ini adalah untuk menganalisis efisiensi waktu eksekusi kedua algoritma ketika dihadapkan pada volume data yang besar.
+Aplikasi ini dirancang khusus untuk menganalisis perilaku algoritma pada tiga kondisi: **Best Case**, **Average Case**, dan **Worst Case**.
 
 ## 👥 Anggota Kelompok
 
@@ -18,7 +18,8 @@ Tujuan utama program ini adalah untuk menganalisis efisiensi waktu eksekusi kedu
 
 ### 1. Euclidean Iteratif
 Menggunakan pendekatan perulangan (`while loop`) untuk mencari sisa bagi hingga mencapai 0.
-* **Karakteristik:** Efisien memori karena tidak menambah tumpukan pemanggilan fungsi (*call stack*).
+* **Karakteristik:** Efisien memori, stabil, dan tidak menambah tumpukan pemanggilan fungsi (*call stack*).
+* **Kompleksitas Waktu:** $O(\log(\min(a, b)))$
 * **Implementasi Python:**
     ```python
     while b != 0:
@@ -28,27 +29,32 @@ Menggunakan pendekatan perulangan (`while loop`) untuk mencari sisa bagi hingga 
 
 ### 2. Euclidean Rekursif
 Menggunakan pendekatan pemanggilan fungsi diri sendiri (*self-reference*).
-* **Karakteristik:** Kode lebih ringkas dan matematis, namun memiliki *overhead* waktu dan memori untuk manajemen stack.
+* **Karakteristik:** Kode lebih ringkas, namun memiliki *overhead* memori untuk manajemen *stack frames*. Rentan terhadap *Stack Overflow* pada input yang sangat ekstrim.
+* **Kompleksitas Waktu:** $O(\log(\min(a, b)))$
 * **Implementasi Python:**
     ```python
     if b == 0: return a
-    else: return fpb_rekursif(b, a % b)
+    return fpb_rekursif(b, a % b)
     ```
 
 ---
 
-## 🚀 Fitur Aplikasi
+## 🚀 Fitur Unggulan
 
-1.  **Pengaturan Dinamis (Sidebar):**
-    * User dapat mengatur jumlah data maksimal (input size).
-    * User dapat mengatur *step* (kelipatan data).
-    * User dapat mengatur range besaran angka random yang diuji.
-2.  **Visualisasi Grafik:**
-    * Menampilkan *Line Chart* perbandingan waktu eksekusi (Sumbu X: Ukuran Input, Sumbu Y: Waktu).
-3.  **Data Table:**
-    * Menampilkan data mentah hasil pengujian dalam bentuk tabel Pandas.
-4.  **Kesimpulan Otomatis:**
-    * Sistem secara otomatis menghitung total waktu dan menentukan algoritma mana yang lebih cepat berdasarkan data real-time.
+### 1. Skenario Pengujian (Test Cases)
+Program ini mendukung 3 skenario uji untuk analisis mendalam:
+* **Average Case (Random):** Input berupa angka acak. Menggambarkan penggunaan sehari-hari.
+* **Worst Case (Fibonacci):** Input berupa deret Fibonacci berurutan. Memaksa algoritma melakukan langkah pembagian terbanyak (berdasarkan Teorema Lamé).
+* **Best Case (Kelipatan):** Input dimana angka satu adalah kelipatan angka lainnya. Algoritma selesai dalam 1-2 langkah modulus.
+
+### 2. Visualisasi & Data
+* **Grafik Line Chart:** Membandingkan tren kenaikan waktu seiring bertambahnya jumlah data.
+* **Tabel Data:** Menampilkan detail hasil waktu iteratif vs rekursif untuk setiap ukuran data.
+* **Presisi Tinggi:** Pengukuran waktu ditampilkan hingga **6 angka di belakang koma** (mikro-detik) untuk akurasi maksimal.
+
+### 3. Analisis Dinamis
+* Menampilkan metrik rata-rata waktu dan selisih performa.
+* Memberikan kesimpulan otomatis dan penjelasan teknis berdasarkan skenario yang sedang dijalankan.
 
 ---
 
