@@ -80,11 +80,11 @@ if st.sidebar.button("Mulai Analisis"):
     
     # A. GRAFIK LINE CHART
     st.markdown("---")
-    st.subheader("📈 Grafik Perbandingan Waktu Eksekusi")
+    st.subheader("Grafik Perbandingan Waktu Eksekusi")
     st.line_chart(df)
     
     # B. TABEL DATA
-    st.subheader("📋 Tabel Data Hasil")
+    st.subheader("Tabel Data Hasil")
     st.dataframe(df, use_container_width=True)
 
     # METRIK & KESIMPULAN
@@ -99,7 +99,7 @@ if st.sidebar.button("Mulai Analisis"):
         selisih = avg_rekur - avg_iter
     
     st.markdown("---")
-    st.subheader("⏱️ Perbandingan Rata-rata Waktu")
+    st.subheader("Perbandingan Rata-rata Waktu")
     
     # tampiolan metric
     col1, col2, col3 = st.columns(3)
@@ -118,3 +118,4 @@ if st.sidebar.button("Mulai Analisis"):
         st.success(f"**Hasil: Seimbang (Best Case).**\nAlgoritma selesai hanya dalam 1-2 langkah. Perbedaan waktu sangat kecil (mendekati 0 detik) sehingga kedua metode sama efektifnya.")
     else:
         st.info(f"**Hasil: Iteratif Sedikit Unggul (Average Case).**\nPada data acak, Iteratif menang tipis. Python mengeksekusi *looping* (while) lebih cepat daripada pemanggilan fungsi berulang (rekursi).")
+
